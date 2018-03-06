@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+       <!--  =========> Using List And Map  start (02 & 03) <============ -->
+        <import type="java.util.List"/>
+        <import type="java.util.Map"/>
+        <import type="com.bangladesh.user.databindingpart1.MainActivity.Student"></import>  <!--(02)-->
+
+
+
+        <variable
+            name="students"
+            type="List&lt;Student&gt;"/>  <!--(03)-->
+        <variable
+            name="nameVsAge"
+            type="Map&lt;String,Integer&gt;"/><!--(03)-->
+
+        <!-- =========> Using List And Map End <==============  (02 & 03) -->
+
+        <variable
+            name="AStudent"
+            type="com.bangladesh.user.databindingpart1.MainActivity.Student"/>
+
+<variable
+    name="Handler"
+    type="com.bangladesh.user.databindingpart1.MainActivity.EventHandler"></variable>
+
+
+
+
+<!--        ==================>  this code for simple text show using data binding <=====================
+
+        <variable
+            name="textOne"
+            type="String"/>
+        <variable
+            name="textTwo"
+            type="String"/>
+        <variable
+            name="textThree"
+            type="String"/>-->
+
+
+
+
+    </data>
+
+
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bangladesh.user.databindingpart1.MainActivity">
+
+
+    <!--
+    ======> if we have pass null value then we can use any message by using this syntex<=======
+    android:text="@{AStudent.name==null?`No Name Found`:AStudent.name}"-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{AStudent.name??`No Name Found`}"
+        ></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{String.valueOf(AStudent.age)}"
+        ></TextView>
+
+   <!-- android:onClick="@{Handler::handlerClick}"
+    android:onClick="@{(view)->Handler.handlerClick(view)}"
+   -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click event"
+        android:onClick="@{()->Handler.handlerClick(AStudent.name)}"
+ />
+
+   <!-- ==========> Using List And Map  <============ (04) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{students[0].name}"
+        ></TextView>
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@{String.valueOf(nameVsAge[`MD. junaet Hossain`])}"
+    ></TextView>
+
+ <!-- =============> using data from  string.xml file <================ -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{@string/student_info(students[0].name,students[0].age)}"
+        ></TextView>
+
+
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@{@drawable/sddededed}"
+        />
+<!--
+  ==================>  this code for simple text show using data binding <=====================
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{textOne}"
+        ></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{textTwo}"
+        ></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{textThree}"
+        ></TextView>
+       />-->
+
+</LinearLayout>
+</layout>
